@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1577218526 source:/home/princess/tp-lab-3/src/main1.cpp
+1577226139 source:/home/princess/tp-lab-3/src/main1.cpp
 	<iostream>
 	"task1.h"
 
@@ -15,11 +15,11 @@
 	<cmath>
 	"Circle.h"
 
-1577219127 source:/home/princess/tp-lab-3/src/main2.cpp
+1577226139 source:/home/princess/tp-lab-3/src/main2.cpp
 	<iostream>
 	"task1.h"
 
-1577225663 source:/home/princess/tp-lab-3/src/DateTime.cpp
+1577225706 source:/home/princess/tp-lab-3/src/DateTime.cpp
 	<iostream>
 	<stdio.h>
 	<ctime>
@@ -33,7 +33,7 @@
 	<ctime>
 	<string.h>
 
-1577225369 source:/home/princess/tp-lab-3/src/main3.cpp
+1577226139 source:/home/princess/tp-lab-3/src/main3.cpp
 	<iostream>
 	<string>
 	"DateTime.h"

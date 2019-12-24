@@ -46,7 +46,7 @@ DateTime::DateTime(unsigned int day, unsigned int month, unsigned int year){
     time(&this->now);
     this->date = localtime(&this->now);
     this->date->tm_year = year - 1900;
-    this->date->tm_mon = month - 1;
+    this->date->tm_mon = month-1;
     this->date->tm_mday = day;
     this->now = mktime(this->date);
     this->date = localtime(&this->now);
@@ -66,7 +66,7 @@ DateTime::DateTime(tm &date, time_t &now){
 }
 
 string DateTime::getToday(){
-	string month = getMonth(this->date->tm_mon);
+	string month = getMonth(this->date->tm_mon+1);
 	string w = getDay(this->date->tm_wday);
 	string date = to_string(this->date->tm_mday) + ' ' + month + ' ' + to_string(this->date->tm_year+=1900) + ", " + w;
 	return date;
@@ -75,7 +75,7 @@ string DateTime::getToday(){
 string DateTime::getYesterday(){
     time_t tmp = this->now - 24 * 3600;
     tm* curr = localtime(&tmp);
-    string month = getMonth(curr->tm_mon);
+    string month = getMonth(curr->tm_mon+1);
 	string w = getDay(curr->tm_wday);
 	string date = to_string(curr->tm_mday) + ' ' + month + ' ' + to_string(curr->tm_year+=1900) + ", " + w;
 	return date;
@@ -84,7 +84,7 @@ string DateTime::getYesterday(){
 string DateTime::getTomorrow(){
     time_t tmp = this->now + 24 * 3600;
     tm* curr = localtime(&tmp);
-    string month = getMonth(curr->tm_mon);
+    string month = getMonth(curr->tm_mon+1);
 	string w = getDay(curr->tm_wday);
 	string date = to_string(curr->tm_mday) + ' ' + month + ' ' + to_string(curr->tm_year+=1900) + ", " + w;
 	return date;
@@ -93,7 +93,7 @@ string DateTime::getTomorrow(){
 string DateTime::getFuture(unsigned int N){
     time_t tmp = this->now + N * 24 * 3600;
     tm* curr = localtime(&tmp);
-    string month = getMonth(curr->tm_mon);
+    string month = getMonth(curr->tm_mon+1);
 	string w = getDay(curr->tm_wday);
 	string date = to_string(curr->tm_mday) + ' ' + month + ' ' + to_string(curr->tm_year+=1900) + ", " + w;
 	return date;
@@ -102,7 +102,7 @@ string DateTime::getFuture(unsigned int N){
 string DateTime::getPast(unsigned int N){
     time_t tmp = this->now - N * 24 * 3600;
     tm* curr = localtime(&tmp);
-    string month = getMonth(curr->tm_mon);
+    string month = getMonth(curr->tm_mon+1);
 	string w = getDay(curr->tm_wday);
 	string date = to_string(curr->tm_mday) + ' ' + month + ' ' + to_string(curr->tm_year+=1900) + ", " + w;
 	return date;
