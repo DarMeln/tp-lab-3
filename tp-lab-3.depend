@@ -1,25 +1,25 @@
 # depslib dependency file v1.0
-1577208101 source:/home/princess/tp-lab-3/src/main1.cpp
+1577218526 source:/home/princess/tp-lab-3/src/main1.cpp
 	<iostream>
 	"task1.h"
 
-1576620170 /home/princess/tp-lab-3/include/task1.h
+1577216993 /home/princess/tp-lab-3/include/task1.h
 	"Circle.h"
 
-1576619733 /home/princess/tp-lab-3/include/Circle.h
+1577218325 /home/princess/tp-lab-3/include/Circle.h
 
-1576620535 source:/home/princess/tp-lab-3/src/task1.cpp
+1577219094 source:/home/princess/tp-lab-3/src/task1.cpp
 	"task1.h"
 
-1576619931 source:/home/princess/tp-lab-3/src/Circle.cpp
+1577218506 source:/home/princess/tp-lab-3/src/Circle.cpp
 	<cmath>
 	"Circle.h"
 
-1577208068 source:/home/princess/tp-lab-3/src/main2.cpp
+1577219127 source:/home/princess/tp-lab-3/src/main2.cpp
 	<iostream>
 	"task1.h"
 
-1577213942 source:/home/princess/tp-lab-3/src/DateTime.cpp
+1577225663 source:/home/princess/tp-lab-3/src/DateTime.cpp
 	<iostream>
 	<stdio.h>
 	<ctime>
@@ -28,12 +28,12 @@
 	<math.h>
 	"DateTime.h"
 
-1577212654 /home/princess/tp-lab-3/include/DateTime.h
+1577224762 /home/princess/tp-lab-3/include/DateTime.h
 	<iostream>
 	<ctime>
 	<string.h>
 
-1577213987 source:/home/princess/tp-lab-3/src/main3.cpp
+1577225369 source:/home/princess/tp-lab-3/src/main3.cpp
 	<iostream>
 	<string>
 	"DateTime.h"

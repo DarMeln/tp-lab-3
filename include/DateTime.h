@@ -9,13 +9,14 @@ class DateTime{
 public:
 	DateTime(unsigned int day, unsigned int month, unsigned int year);
 	DateTime();
-	DateTime(tm &date);
+	DateTime(tm &date, time_t &now);
 	string getToday();
 	string getYesterday();
 	string getTomorrow();
 	string getFuture(unsigned int N);
 	string getPast(unsigned int N);
-	int getDifference(DateTime&);
+	int getDifference(DateTime& d);
 private:
+    time_t now;
 	tm * date;
 };

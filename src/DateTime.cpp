@@ -12,18 +12,18 @@ using namespace std;
 string getMonth(int m){
 	string month;
 	switch(m){
-        case 0: {month = "january"; break;}
-		case 1: {month = "february"; break;}
-		case 2: {month = "march"; break;}
-		case 3: {month = "april"; break;}
-		case 4: {month = "may"; break;}
-		case 5: {month = "june"; break;}
-		case 6: {month = "july"; break;}
-		case 7: {month = "august"; break;}
-		case 8: {month = "september"; break;}
-		case 9: {month = "october"; break;}
-		case 10: {month = "november"; break;}
-		case 11: {month = "december"; break;}
+        case 0: {month = "december"; break;}
+		case 1: {month = "january"; break;}
+		case 2: {month = "february"; break;}
+		case 3: {month = "march"; break;}
+		case 4: {month = "april"; break;}
+		case 5: {month = "may"; break;}
+		case 6: {month = "june"; break;}
+		case 7: {month = "july"; break;}
+		case 8: {month = "august"; break;}
+		case 9: {month = "september"; break;}
+		case 10: {month = "october"; break;}
+		case 11: {month = "november"; break;}
 	}
 	return month;
 }
@@ -43,69 +43,68 @@ string getDay(int d){
 }
 
 DateTime::DateTime(unsigned int day, unsigned int month, unsigned int year){
-    this->date = new tm[sizeof(tm)];
-	this->date->tm_mday = day;
-	this->date->tm_mon = month;
-	this->date->tm_year = year;
+    time(&this->now);
+    this->date = localtime(&this->now);
+    this->date->tm_year = year - 1900;
+    this->date->tm_mon = month - 1;
+    this->date->tm_mday = day;
+    this->now = mktime(this->date);
+    this->date = localtime(&this->now);
 }
 
 DateTime::DateTime(){
 	time_t t;
 	time(&t);
 	this->date = localtime(&t);
-	this->date->tm_year += 1900;
+	this->now = t;
+	this->date->tm_year;
 }
 
-DateTime::DateTime(tm &date){
+DateTime::DateTime(tm &date, time_t &now){
 	*(this->date) = date;
+	this->now = now;
 }
 
 string DateTime::getToday(){
 	string month = getMonth(this->date->tm_mon);
 	string w = getDay(this->date->tm_wday);
-	string date = to_string(this->date->tm_mday) + ' ' + month + ' ' + to_string(this->date->tm_year) + ", " + w;
+	string date = to_string(this->date->tm_mday) + ' ' + month + ' ' + to_string(this->date->tm_year+=1900) + ", " + w;
 	return date;
 }
 
 string DateTime::getYesterday(){
-    this->date->tm_mday--;
-    mktime(this->date);
-    string month = getMonth(this->date->tm_mon);
-	string w = getDay(this->date->tm_wday);
-	string date = to_string(this->date->tm_mday) + ' ' + month + ' ' + to_string(this->date->tm_year) + ", " + w;
-	this->date->tm_mday++;
+    time_t tmp = this->now - 24 * 3600;
+    tm* curr = localtime(&tmp);
+    string month = getMonth(curr->tm_mon);
+	string w = getDay(curr->tm_wday);
+	string date = to_string(curr->tm_mday) + ' ' + month + ' ' + to_string(curr->tm_year+=1900) + ", " + w;
 	return date;
 }
 
 string DateTime::getTomorrow(){
-    this->date->tm_mday++;
-    mktime(this->date);
-    string month = getMonth(this->date->tm_mon);
-	string w = getDay(this->date->tm_wday);
-	string date = to_string(this->date->tm_mday) + ' ' + month + ' ' + to_string(this->date->tm_year) + ", " + w;
-	this->date->tm_mday--;
+    time_t tmp = this->now + 24 * 3600;
+    tm* curr = localtime(&tmp);
+    string month = getMonth(curr->tm_mon);
+	string w = getDay(curr->tm_wday);
+	string date = to_string(curr->tm_mday) + ' ' + month + ' ' + to_string(curr->tm_year+=1900) + ", " + w;
 	return date;
 }
 
 string DateTime::getFuture(unsigned int N){
-    this->date->tm_mday += N;
-    mktime(this->date);
-    string month = getMonth(this->date->tm_mon);
-	string w = getDay(this->date->tm_wday);
-	string date = to_string(this->date->tm_mday) + ' ' + month + ' ' + to_string(this->date->tm_year) + ", " + w;
-	this->date->tm_mday -= N;
-    mktime(this->date);
+    time_t tmp = this->now + N * 24 * 3600;
+    tm* curr = localtime(&tmp);
+    string month = getMonth(curr->tm_mon);
+	string w = getDay(curr->tm_wday);
+	string date = to_string(curr->tm_mday) + ' ' + month + ' ' + to_string(curr->tm_year+=1900) + ", " + w;
 	return date;
 }
 
 string DateTime::getPast(unsigned int N){
-    this->date->tm_mday -= N;
-    mktime(this->date);
-    string month = getMonth(this->date->tm_mon);
-	string w = getDay(this->date->tm_wday);
-	string date = to_string(this->date->tm_mday) + ' ' + month + ' ' + to_string(this->date->tm_year) + ", " + w;
-	this->date->tm_mday += N;
-    mktime(this->date);
+    time_t tmp = this->now - N * 24 * 3600;
+    tm* curr = localtime(&tmp);
+    string month = getMonth(curr->tm_mon);
+	string w = getDay(curr->tm_wday);
+	string date = to_string(curr->tm_mday) + ' ' + month + ' ' + to_string(curr->tm_year+=1900) + ", " + w;
 	return date;
 }
 
