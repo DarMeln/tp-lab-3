@@ -1,3 +1,4 @@
+#include <iostream>
 #include "task1.h"
 
 double calcDelta(){
@@ -11,6 +12,6 @@ double calcCost(){
     Circle pool(3);
     Circle road(pool.getRadius()+1);
     double roadCost = (road.getArea() - pool.getArea()) * 1000;
-    double fenceCost = pool.getFerence() * 2000;
+    double fenceCost = road.getFerence() * 2000;
     return roadCost + fenceCost;
 }

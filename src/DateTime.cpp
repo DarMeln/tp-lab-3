@@ -109,6 +109,5 @@ string DateTime::getPast(unsigned int N){
 }
 
 int DateTime::getDifference(DateTime& d){
-    time_t t1 = mktime(this->date), t2 = mktime(d.date);
-    return abs((int)round(difftime(t2, t1) / (3600 * 24)));
+    return abs((int)round(difftime(this->now, d.now) / (3600 * 24)));
 }
