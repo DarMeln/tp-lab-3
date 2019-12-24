@@ -1,12 +1,12 @@
 #include "task1.h"
 
-double calcDelta(Circle rope){
+double Circle::calcDelta(Circle rope = this){
     double oldRad = rope.getRadius();
     rope.setFerence(rope.getFerence() + 0.001);
     return rope.getRadius() - oldRad;
 }
 
-double calcCost(Circle pool){
+double Circle::calcCost(Circle pool = this){
     Circle road(pool.getRadius()+1);
     double roadArea = road.getArea() - pool.getArea();
     double roadCost = roadArea * 1000;

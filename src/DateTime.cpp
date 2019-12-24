@@ -77,7 +77,7 @@ string DateTime::getYesterday(){
 	return date;
 }
 
-string DateTime::getTommorow(){
+string DateTime::getTomorrow(){
     this->date->tm_mday++;
     mktime(this->date);
     string month = getMonth(this->date->tm_mon);
