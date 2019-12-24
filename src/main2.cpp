@@ -4,6 +4,5 @@
 using namespace std;
 
 int main(){
-    Circle pool(3);
-    cout << calcCost(pool);
+    cout << calcCost();
 }
