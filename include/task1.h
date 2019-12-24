@@ -1,3 +1,3 @@
 #include "Circle.h"
-double calcDelta(Circle rope);
-double calcCost(Circle pool);
+double calcDelta();
+double calcCost();
