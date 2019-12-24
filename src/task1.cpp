@@ -1,13 +1,13 @@
 #include "task1.h"
 
-double Circle::calcDelta(){
+double calcDelta(){
     Circle rope(6378.1);
     double oldRad = 6378.1;
     rope.setFerence(rope.getFerence() + 0.001);
     return rope.getRadius() - oldRad;
 }
 
-double Circle::calcCost(){
+double calcCost(){
     Circle pool(3.0);
     Circle road(pool.getRadius()+1.0);
     double roadArea = road.getArea() - pool.getArea();
